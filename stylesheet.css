@@ -62,7 +62,13 @@ nav {
 #nav-bar a:hover {
     text-decoration: underline;
 }
-
+.btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 24px;
+    width: 30px;
+    cursor: pointer;
 /* Home Section Styles */
 .home {
     min-height: 90vh;
