@@ -1,3 +1,4 @@
+/* Reset and general styles */
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +16,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-   text-transform: capitalize;
+    text-transform: capitalize;
 }
 
 header h1 {
@@ -51,6 +52,7 @@ nav {
 
 #nav-bar li {
     margin: 0;
+    position: relative;
 }
 
 #nav-bar a {
@@ -62,256 +64,287 @@ nav {
 #nav-bar a:hover {
     text-decoration: underline;
 }
+
 .btn {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 24px;
     width: 30px;
     cursor: pointer;
-/* Home Section Styles */
-.home {
-    min-height: 90vh;
-    background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9)), url('sun image.jpeg'); /* Ensure the correct path to your image */
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:flex-start;
-    text-align: left;
-    padding: 20px 20px;
+    position: relative;
+    z-index: 1100;
 }
 
-.home h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+.btn .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    transition: all 0.3s ease;
 }
 
-.home p {
-    font-size: 18px;
-    margin-bottom: 20px;
+.btn.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
-.BTN {
-    background-color: #ff9900;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
+.btn.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.btn.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (min-width: 601px) {
+    .btn {
+        display: none;
+    }
+}
+
+@media (max-width: 610px) {
+    #nav-bar {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 18%;
+        left: 0;
+        width: 100%;
+        background-color: rgb(14, 12, 98);
+        padding: 20px 0;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    #nav-bar.active {
+        display: flex;
+    }
+
+    #nav-bar li {
+        margin: 10px 0;
+    }
+
+    .dropdown-content {
+        position: static; /* Change to static for proper display */
+        display: none; /* Hide by default */
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown .dropbtn.active + .dropdown-content {
+        display: block; /* Show when active */
+        : -50%;
+        left: 0;
+    }
+}
+
+/* Dropdown Styles */
+.dropdown .dropdown-content {
+    display: none;
+    /* position: absolute; */
+    top: 10%;
+    left: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
+    display: block;
 }
 
-.BTN:hover {
-    background-color: #e68a00;
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
 }
-.services {
+
+/* Section Styles */
+.home {
+    position: relative;
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('sun image.jpeg') no-repeat center center/cover;
+    color: #fff;
+}
+
+
+/* Other existing styles... */
+
+.serves {
     display: flex;
     justify-content: space-around;
+    padding: 40px 20px;
+    background-color: #efefef;
+}
+
+.serve {
+    text-align: center;
     padding: 20px;
-    min-height: 20vh;
+    background-color: #fff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.service {
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #000;
-    margin: 20px;
-    width: 30%;
-    height: 30%;
+.serve h3 {
+    margin-bottom: 10px;
+}
 
+.serve p {
+    font-size: 14px;
+    color: #555;
 }
-/*.about-us {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #f8f8f8;
-    display:flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-.about-us img{
-    width:60%;**/
 
 .about-us {
     display: flex;
     align-items: center;
-    padding: 50px 20px;
-    background-color: #f8f8f8;
+    padding: 40px 20px;
 }
 
 .about-us img {
-    max-width: 50%;
-    height: auto;
+    width: 50%;
     margin-right: 20px;
 }
 
 .about-us-text {
-    max-width: 50%;
+    width: 50%;
 }
 
 .about-us-text h2 {
-    margin-top: 0;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.about-us-text p {
+    font-size: 16px;
+    margin-bottom: 20px;
 }
 
 .about-us-text button {
-    margin-top: 20px;
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #333;
+    color: #fff;
     border: none;
-    color: white;
-    font-size: 1em;
     cursor: pointer;
+    text-transform: uppercase;
 }
+
+.about-us-text button:hover {
+    background-color: #555;
+}
+
 .industries {
     display: flex;
-    justify-content: space-around;
-    padding: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px 20px;
 }
 
 .industry {
     position: relative;
-    width: 45%;
+    width: calc(50% - 20px);
 }
 
 .industry img {
     width: 100%;
-    height: auto;
+    display: block;
 }
 
 .overlay {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
     padding: 20px;
-}
-
-.overlay h3 {
-    margin: 0;
-}
-.section-of {
     text-align: center;
-    padding: 20px;
-    background-color: #f4f4f4;
-    min-height: 80vh;
-    padding: 70px 20px 20px 20px;
 }
 
 .services-container {
     display: flex;
-    justify-content: center;
-    gap: 30px;
     flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 40px 20px;
 }
 
 .service-icon {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    max-width: 300px;
+    width: 30%;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .service-icon img {
-    width: 30%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 10px;
-}
-
-.service-content {
-    padding: 20px;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .service-content h2 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 .service-content p {
     font-size: 14px;
-    color: #666;
+    color: #555;
     margin-bottom: 20px;
 }
 
 .service-content a {
     text-decoration: none;
-    color: #007BFF;
+    color: #333;
     font-weight: bold;
 }
 
+.service-content a:hover {
+    text-decoration: underline;
+}
+
 footer {
-    background-color: #112;
-    color: white;
-    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 20px;
     text-align: center;
 }
 
 .footer-info {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px 0;
 }
 
-.footer-links ul {
+.footer-info div {
+    flex: 1;
+    padding: 0 20px;
+    min-width: 250px;
+}
+
+.footer-info h4 {
+    margin-bottom: 10px;
+}
+
+.footer-info p,
+.footer-info ul {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.footer-info ul {
     list-style: none;
     padding: 0;
 }
 
-.footer-links a {
-    color: white;
+.footer-info ul li {
+    margin-bottom: 5px;
+}
+
+.footer-info ul li a {
+    color: #fff;
     text-decoration: none;
 }
-@media (max-width: 1024px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
 
-    .services, .industries, .footer-info {
-        flex-direction: column;
-    }
-
-    .about-us {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about-us img, .about-us-text {
-        max-width: 100%;
-        margin: 0;
-    }
-}
-
-@media (max-width: 600px) {
-    .home h1 {
-        font-size: 1.5em;
-    }
-
-    .home p, .home button {
-        font-size: 0.9em;
-    }
-
-    .services, .industries {
-        flex-direction: column;
-    }
-
-    .service, .industry {
-        width: 80%;
-        margin: 20px auto;
-    }
-
-    .about-us img, .about-us-text {
-        max-width: 100%;
-        margin: 0;
-    }
+.footer-info ul li a:hover {
+    text-decoration: underline;
 }
